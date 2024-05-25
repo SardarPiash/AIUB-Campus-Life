@@ -8,8 +8,8 @@ import DetailsModal from './DetailsModal';
 export default function Student_activities() {
   const [activitiesData, setActivitiesData] = useState(studentActivitiesData);
   const [filterInfor, setFilterInfo] = useState(FilterInfo)
-  const [openDetailsModal,setOpenDetailsModal]=useState(false)
-  const [contentID,setContentID]=useState(null);
+  const [openDetailsModal, setOpenDetailsModal] = useState(false)
+  const [contentID, setContentID] = useState(null);
 
   ///filter function...............
   function handleFilter(filterValue) {
@@ -26,8 +26,8 @@ export default function Student_activities() {
     }
   }
 
-///function for search based on Title and Organization......
-function handleSearch(text) {
+  ///function for search based on Title and Organization......
+  function handleSearch(text) {
     const searchTextLower = text.toLowerCase();
     const filteredData = studentActivitiesData.filter(
       (data) =>
@@ -37,44 +37,43 @@ function handleSearch(text) {
     setActivitiesData(filteredData);
   }
 
-///open modal...
-function handleDetailsModal(ID){
-    setContentID(ID)
-    setOpenDetailsModal(true)
-}
+  ///open modal...
+  function handleDetailsModal(ID) {
+    setContentID(ID);
+    setOpenDetailsModal(true);
+  }
 
-///close modal.......
-function handleModalOff(){
-    setOpenDetailsModal(false)
-    setContentID(null)
-}
-
+  ///close modal.......
+  function handleModalOff() {
+    setOpenDetailsModal(false);
+    setContentID(null);
+  }
 
   return (
     <div>
-        {openDetailsModal && (
-            <DetailsModal ID={contentID} ActivitiesData={activitiesData} onClose={handleModalOff}/>
-        ) }
+      {openDetailsModal && (
+        <DetailsModal ID={contentID} ActivitiesData={studentActivitiesData} onClose={handleModalOff} />
+      )}
       <div className="bg-gray-200">
         <main className="p-8">
           <div className="flex justify-between items-center mb-4">
             <Filter FilterInfo={filterInfor} FilterMethod={handleFilter} />
-            <Search SerachText={handleSearch}/>
+            <Search SerachText={handleSearch} />
           </div>
 
           <h2 className="text-2xl font-bold mb-4 text-center">Student Activities</h2>
 
           <div className="bg-white rounded-lg shadow">
             <div className="grid grid-cols-3 bg-gray-300 p-2 rounded-t-lg">
-              <div className="font-bold">Activities</div>
-              <div className="font-bold">Organizer</div>
+              <div className="font-bold text-left">Activities</div>
+              <div className="font-bold text-left">Organizer</div>
               <div className="font-bold">Date</div>
             </div>
             <div className="divide-y divide-gray-200">
               {activitiesData.map((data) => (
-                <div className="grid grid-cols-3 p-2 hover:bg-gray-100" key={data.id} onClick={()=>handleDetailsModal(data.id)}>
-                  <p className="text-blue-500 hover:underline"> {data.Title}</p>
-                  <div>{data.Organizer}</div>
+                <div className="grid grid-cols-3 p-2 hover:bg-gray-100" key={data.id} onClick={() => handleDetailsModal(data.id)}>
+                  <p className="text-blue-500 hover:underline text-left">{data.Title}</p>
+                  <div className="text-left">{data.Organizer}</div>
                   <div>{data.Date}</div>
                 </div>
               ))}
