@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Activities</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-200">
+    <header class="bg-gray-700 text-white p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <img src="logo.png" alt="AIUB Logo" class="h-12 w-12">
+            <div>
+                <h1 class="text-xl font-bold">AIUB Campus Life</h1>
+                <p>American International University-Bangladesh</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-gray-600 text-white p-2 flex justify-around">
+        <a href="#" class="hover:underline">Home</a>
+        <a href="#" class="hover:underline">Student Activities</a>
+        <a href="#" class="hover:underline">Clubs page</a>
+        <a href="#" class="hover:underline">Facilities page</a>
+        <a href="#" class="hover:underline">Contact page</a>
+    </nav>
+
+    <main class="p-8">
+        <div class="flex justify-between items-center mb-4">
+            <div class="flex items-center space-x-2">
+                <label for="filter" class="font-semibold">Filter by</label>
+                <input type="text" id="filter" class="border border-gray-400 rounded p-1">
+            </div>
+            <div>
+                <input type="text" class="border border-gray-400 rounded p-1">
+                <button class="bg-blue-500 text-white rounded p-1 ml-2">Search</button>
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-bold mb-4 text-center">Student Activities</h2>
+
+        <div class="bg-white rounded-lg shadow">
+            <div class="grid grid-cols-3 bg-gray-300 p-2 rounded-t-lg">
+                <div class="font-bold">Activities</div>
+                <div class="font-bold">Organizer</div>
+                <div class="font-bold">Date</div>
+            </div>
+            <div class="divide-y divide-gray-200">
+                <div class="grid grid-cols-3 p-2 hover:bg-gray-100">
+                    <a href="#" class="text-blue-500 hover:underline">FBA Events and Students' Engagements</a>
+                    <div>FBA</div>
+                    <div>23-03-2024</div>
+                </div>
+                <div class="grid grid-cols-3 p-2 hover:bg-gray-100">
+                    <a href="#" class="text-blue-500 hover:underline">FBA Events and Students' Engagements</a>
+                    <div>FBA</div>
+                    <div>23-03-2024</div>
+                </div>
+                <div class="grid grid-cols-3 p-2 hover:bg-gray-100">
+                    <a href="#" class="text-blue-500 hover:underline">FBA Events and Students' Engagements</a>
+                    <div>FBA</div>
+                    <div>23-03-2024</div>
+                </div>
+                <div class="grid grid-cols-3 p-2 hover:bg-gray-100">
+                    <a href="#" class="text-blue-500 hover:underline">FBA Events and Students' Engagements</a>
+                    <div>FBA</div>
+                    <div>23-03-2024</div>
+                </div>
+                <div class="grid grid-cols-3 p-2 hover:bg-gray-100">
+                    <a href="#" class="text-blue-500 hover:underline">FBA Events and Students' Engagements</a>
+                    <div>FBA</div>
+                    <div>23-03-2024</div>
+                </div>
+                <div class="grid grid-cols-3 p-2 hover:bg-gray-100">
+                    <a href="#" class="text-blue-500 hover:underline">FBA Events and Students' Engagements</a>
+                    <div>FBA</div>
+                    <div>23-03-2024</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto grid grid-cols-4 gap-4">
+            <div>
+                <h3 class="font-bold">ACADEMICS</h3>
+                <ul class="space-y-1">
+                    <li><a href="#" class="hover:underline">Undergrad Admissions & Programs</a></li>
+                    <li><a href="#" class="hover:underline">Graduate Admissions & Programs</a></li>
+                    <li><a href="#" class="hover:underline">Current Students</a></li>
+                    <li><a href="#" class="hover:underline">Alumni</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold">PEOPLE</h3>
+                <ul class="space-y-1">
+                    <li><a href="#" class="hover:underline">Faculty</a></li>
+                    <li><a href="#" class="hover:underline">Staff</a></li>
+                    <li><a href="#" class="hover:underline">Students</a></li>
+                    <li><a href="#" class="hover:underline">Others</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold">LOCATION & CONTACT</h3>
+                <address class="not-italic">
+                    408/1, Kuratoli, Khilkhet, Dhaka 1229, Bangladesh<br>
+                    Telephone: +88 02 841 4046-9, +88 02 841 4050<br>
+                    Fax: +88 02 841 2255<br>
+                    Email: <a href="mailto:info@aiub.edu" class="hover:underline">info@aiub.edu</a>
+                </address>
+            </div>
+            <div>
+                <h3 class="font-bold">SOCIAL ICONS</h3>
+                <div class="flex space-x-2">
+                    <a href="#" class="bg-gray-700 p-2 rounded-full"><img src="twitter-icon.png" alt="Twitter" class="h-6 w-6"></a>
+                    <a href="#" class="bg-gray-700 p-2 rounded-full"><img src="youtube-icon.png" alt="YouTube" class="h-6 w-6"></a>
+                    <a href="#" class="bg-gray-700 p-2 rounded-full"><img src="instagram-icon.png" alt="Instagram" class="h-6 w-6"></a>
+                    <a href="#" class="bg-gray-700 p-2 rounded-full"><img src="linkedin-icon.png" alt="LinkedIn" class="h-6 w-6"></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p>&copy; 2023 The American International University-Bangladesh</p>
+            <p>Powered by AIUB Software Development</p>
+        </div>
+    </footer>
+</body>
+
+</html>
