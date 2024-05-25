@@ -5,7 +5,6 @@ export default function Filter({FilterInfo,FilterMethod}) {
     function filterMethod(e){
          FilterMethod(e.target.value)
     }
-    console.log(data)
   return (
     <div className="flex items-center space-x-2">
       <label htmlFor="filter" className="font-semibold text-gray-700">

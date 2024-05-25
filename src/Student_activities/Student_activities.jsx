@@ -23,13 +23,25 @@ export default function Student_activities() {
     }
   }
 
+///function for search based on Title and Organization......
+function handleSearch(text) {
+    const searchTextLower = text.toLowerCase();
+    const filteredData = studentActivitiesData.filter(
+      (data) =>
+        data.Title.toLowerCase().includes(searchTextLower) ||
+        data.Organizer.toLowerCase().includes(searchTextLower)
+    );
+    setActivitiesData(filteredData);
+  }
+
+
   return (
     <div>
       <div className="bg-gray-200">
         <main className="p-8">
           <div className="flex justify-between items-center mb-4">
             <Filter FilterInfo={filterInfor} FilterMethod={handleFilter} />
-            <Search />
+            <Search SerachText={handleSearch}/>
           </div>
 
           <h2 className="text-2xl font-bold mb-4 text-center">Student Activities</h2>
