@@ -14,13 +14,13 @@ export default function Navbar() {
               <Link to="/student_activities" className="hover:text-sky-200">Student Activities</Link>
             </li>
             <li>
-              <Link to="#" className="hover:text-sky-200">Clubs</Link>
+              <Link to="/club" className="hover:text-sky-200">Clubs</Link>
             </li>
             <li>
-              <Link to="#" className="hover:text-sky-200">Facilities</Link>
+              <Link to="/facilities" className="hover:text-sky-200">Facilities</Link>
             </li>
             <li>
-              <Link to="#" className="hover:text-sky-200">Contact</Link>
+              <Link to="/contact" className="hover:text-sky-200">Contact</Link>
             </li>
           </ul>
         </div>
