@@ -3,10 +3,13 @@ import { studentActivitiesData } from './data';
 import Filter from '../component/Filter';
 import Search from '../component/Search';
 import { FilterInfo } from './data';
+import DetailsModal from './DetailsModal';
 
 export default function Student_activities() {
   const [activitiesData, setActivitiesData] = useState(studentActivitiesData);
-  const [filterInfor, setFilterInfo] = useState(FilterInfo);
+  const [filterInfor, setFilterInfo] = useState(FilterInfo)
+  const [openDetailsModal,setOpenDetailsModal]=useState(false)
+  const [contentID,setContentID]=useState(null);
 
   ///filter function...............
   function handleFilter(filterValue) {
@@ -34,9 +37,24 @@ function handleSearch(text) {
     setActivitiesData(filteredData);
   }
 
+///open modal...
+function handleDetailsModal(ID){
+    setContentID(ID)
+    setOpenDetailsModal(true)
+}
+
+///close modal.......
+function handleModalOff(){
+    setOpenDetailsModal(false)
+    setContentID(null)
+}
+
 
   return (
     <div>
+        {openDetailsModal && (
+            <DetailsModal ID={contentID} ActivitiesData={activitiesData} onClose={handleModalOff}/>
+        ) }
       <div className="bg-gray-200">
         <main className="p-8">
           <div className="flex justify-between items-center mb-4">
@@ -54,7 +72,7 @@ function handleSearch(text) {
             </div>
             <div className="divide-y divide-gray-200">
               {activitiesData.map((data) => (
-                <div className="grid grid-cols-3 p-2 hover:bg-gray-100" key={data.id}>
+                <div className="grid grid-cols-3 p-2 hover:bg-gray-100" key={data.id} onClick={()=>handleDetailsModal(data.id)}>
                   <p className="text-blue-500 hover:underline"> {data.Title}</p>
                   <div>{data.Organizer}</div>
                   <div>{data.Date}</div>
