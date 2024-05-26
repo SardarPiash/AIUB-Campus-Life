@@ -1,4 +1,5 @@
 import React from "react";
+import ImageUrl from "../DynamicUrlForImage/ImageUrl";
 
 export default function DetailsModal({ ID, ActivitiesData, onClose }) {
   const filteredData = ActivitiesData.find((data) => data.id === ID);
@@ -8,18 +9,23 @@ export default function DetailsModal({ ID, ActivitiesData, onClose }) {
       <div className="bg-white shadow-md rounded-2xl overflow-hidden w-full max-w-[600px] p-4 relative">
         {filteredData ? (
           <>
+            <img 
+              src={ImageUrl(filteredData.image)} 
+              alt={filteredData.Title}
+              className="w-full h-48 object-cover rounded-lg mb-4" 
+            />
             <h2 className="text-3xl font-bold mb-4">{filteredData.Title}</h2>
             <span className="block text-base text-gray-700 mb-3">
-             <b> Organizer: </b>{filteredData.Organizer}
+              <b>Organizer: </b>{filteredData.Organizer}
             </span>
             <span className="block text-base text-gray-700 mb-3">
-            <b>  Date: </b>{filteredData.Date}
+              <b>Date: </b>{filteredData.Date}
             </span>
             <span className="block text-base text-gray-700 mb-3">
-            <b> Location: </b>{filteredData.Location}
+              <b>Location: </b>{filteredData.Location}
             </span>
             <p className="text-sm lg:text-base mb-4">
-            <b> Description: </b>{filteredData.Description}
+              <b>Description: </b>{filteredData.Description}
             </p>
           </>
         ) : (
