@@ -11,6 +11,9 @@ import BodyImage from './BodyImage';
 import '../App.css';
 import { Link } from 'react-router-dom';
 import { slugify } from '../component/slugify';
+import GridItem from './GridItem';
+import ImageSlider from './ImageSlider';
+import { GridItemData } from './gridItemdata';
 
 const slides = [
   aiubGolla,
@@ -55,15 +58,13 @@ export default function Homepage() {
         <div className="flex justify-center mb-8">
           <div className="relative w-full max-w-4xl">
             {slides.map((slide, index) => (
-              <img
-                key={index}
-                src={slide}
-                alt={`Campus Life ${index + 1}`}
-                className={`h-96 w-full object-cover rounded-lg shadow-md slide ${currentSlide === index ? 'active' : ''}`}
-              />
+              <span key={index}>
+              <ImageSlider Src={slide} alt= {`Campus Life ${index + 1}`} Class={`h-96 w-full object-cover rounded-lg shadow-md slide ${currentSlide === index ? 'active' : ''}`} />
+              </span>
             ))}
           </div>
         </div>
+        
         {landingData.map((data, index) => (
         <Link to={`/homepage/${slugify(data.title)}`} key={index}>
         <div className="container mx-auto">
@@ -81,12 +82,10 @@ export default function Homepage() {
 
         <h2 className="text-center text-3xl font-bold my-8">Campus Life</h2>
         <div className="container mx-auto grid md:grid-cols-4 gap-4 p-4">
-          {Array(8).fill().map((_, index) => (
+          {GridItemData.map((data, index) => (
             <GridItem
               key={index}
-              imgSrc={boishakhiUllash2}
-              title="Headline"
-              text="At AIUB, our campus is more than just a place to learn—it's a community."
+              Data={data}
             />
           ))}
         </div>
@@ -94,15 +93,3 @@ export default function Homepage() {
     </div>
   );
 }
-
-
-const GridItem = ({ imgSrc, title, text }) => (
-  <div className="bg-white p-4 rounded-lg shadow-md">
-    <img src={imgSrc} alt="Activity" className="rounded-lg mb-2 h-48 w-full object-cover" />
-    <p className="text-center font-semibold">{title}</p>
-    <p className="text-center mb-4">{text}</p>
-    <div className="text-center">
-      <a href="#" className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Read More</a>
-    </div>
-  </div>
-);

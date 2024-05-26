@@ -8,6 +8,7 @@ import Club from "./Club/Club";
 import Facilities from "./Facilities/Facilities";
 import Contact from "./Cantact/Contact";
 import HomeBodyInfo from "./Homepage/HomeBodyInfo";
+import HomeBodyNews from "./Homepage/HomeBodyNews";
 
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/homepage/:title" element={<HomeBodyInfo />} />
+        <Route path="/homepage/news/:title" element={<HomeBodyNews />} />
       </Routes>  
       <Footer />
     </div>

@@ -6,8 +6,8 @@ import ImageUrl from '../DynamicUrlForImage/ImageUrl';
 
 export default function HomeBodyInfo() {
   const { title } = useParams();
-  const retriveTitle = landingData.find(data => slugify(data.title) === title);
 
+  const retriveTitle = landingData.find(data => slugify(data.title) === title);
   if (!retriveTitle) {
     return <div>Page not found</div>;
   }
