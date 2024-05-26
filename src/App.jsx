@@ -27,8 +27,10 @@ export default function App() {
         <Route path="/homepage/:title" element={<HomeBodyInfo />} />
         <Route path="/homepage/news/:title" element={<HomeBodyNews />} />
         <Route path="/facilities/:name" element={<FacilitiesInfo />} />
-      </Routes>  
+      </Routes> 
+      <div className=" mt-2">
       <Footer />
+        </div> 
     </div>
     </BrowserRouter> 
   )

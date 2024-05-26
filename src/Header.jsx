@@ -3,7 +3,7 @@ import React from 'react'
 export default function Header() {
   return (
     <div>
-        <header className="bg-gray-800 text-white py-4">
+        <header className="bg-blue-800 text-white py-4">
         <div className="container mx-auto flex items-center justify-center">
             <div className="flex items-center">
                 <img className="h-12 w-12" src="../src/assets/Aiub_logo.png" alt="AIUB Logo" />
