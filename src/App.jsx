@@ -7,6 +7,7 @@ import Student_activities from "./Student_activities/Student_activities";
 import Club from "./Club/Club";
 import Facilities from "./Facilities/Facilities";
 import Contact from "./Cantact/Contact";
+import HomeBodyInfo from "./Homepage/HomeBodyInfo";
 
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/club" element={<Club />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/homepage/:title" element={<HomeBodyInfo />} />
       </Routes>  
       <Footer />
     </div>

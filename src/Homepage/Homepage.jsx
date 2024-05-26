@@ -7,7 +7,10 @@ import umbrellaCanteen from '../assets/umbrella_canteen.jpg';
 import boishakhiUllash2 from '../assets/boishakhi_ullash_2.jpg';
 import { landingData } from './homepagedata';
 import ImageUrl from '../DynamicUrlForImage/ImageUrl';
+import BodyImage from './BodyImage';
 import '../App.css';
+import { Link } from 'react-router-dom';
+import { slugify } from '../component/slugify';
 
 const slides = [
   aiubGolla,
@@ -61,17 +64,20 @@ export default function Homepage() {
             ))}
           </div>
         </div>
+        {landingData.map((data, index) => (
+        <Link to={`/homepage/${slugify(data.title)}`} key={index}>
         <div className="container mx-auto">
-          {landingData.map((data, index) => (
-            <Activity
+            <BodyImage
               key={data.id}
               imgSrc={ImageUrl(data.image)}
               title={data.title}
               text={data.description}
               imgPosition={index % 2 === 0 ? 'left' : 'right'}
             />
-          ))}
+          
         </div>
+        </Link>
+        ))}
 
         <h2 className="text-center text-3xl font-bold my-8">Campus Life</h2>
         <div className="container mx-auto grid md:grid-cols-4 gap-4 p-4">
@@ -89,24 +95,6 @@ export default function Homepage() {
   );
 }
 
-const Activity = ({ imgSrc, title, text, imgPosition }) => (
-  <div className="flex p-6 rounded-lg shadow-md">
-    {imgPosition === 'left' && (
-      <div className="w-1/2 fade-in-left flex-none">
-        <img src={imgSrc} alt="Student Activities" className="rounded-lg w-full h-full object-cover" />
-      </div>
-    )}
-    <div className={`w-1/2 p-4 rounded-lg shadow-inner ${imgPosition === 'left' ? 'fade-in-right' : 'fade-in-left'} flex-none`}>
-      <h2 className="text-2xl font-bold mb-2">{title}</h2>
-      <p className="text-gray-700">{text}</p>
-    </div>
-    {imgPosition === 'right' && (
-      <div className="w-1/2 fade-in-right flex-none">
-        <img src={imgSrc} alt="Student Activities" className="rounded-lg w-full h-full object-cover" />
-      </div>
-    )}
-  </div>
-);
 
 const GridItem = ({ imgSrc, title, text }) => (
   <div className="bg-white p-4 rounded-lg shadow-md">
