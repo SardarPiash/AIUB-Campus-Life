@@ -1,4 +1,5 @@
 import React from 'react';
+import ImageUrl from '../DynamicUrlForImage/ImageUrl';
 
 export default function DetailsModal({ ID, clubData, onClose }) {
     const filteredData = clubData.find((data) => data.id === ID);
@@ -10,6 +11,7 @@ export default function DetailsModal({ ID, clubData, onClose }) {
             <div className="bg-white shadow-md rounded-2xl overflow-hidden w-full max-w-[600px] p-4 relative">
                 {filteredData ? (
                     <>
+                    <img src={ImageUrl(filteredData.image)} className="w-full h-48 object-cover rounded-lg mb-4"/>
                         <h2 className="text-3xl font-bold mb-4">{filteredData.name}</h2>
                         <span className="block text-base text-gray-700 mb-3 text-left">
                             <b>Date Established:</b> {filteredData.Date}
