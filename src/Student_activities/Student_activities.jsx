@@ -7,8 +7,8 @@ import DetailsModal from './DetailsModal';
 
 export default function Student_activities() {
   const [activitiesData, setActivitiesData] = useState(studentActivitiesData);
-  const [filterInfor, setFilterInfo] = useState(FilterInfo)
-  const [openDetailsModal, setOpenDetailsModal] = useState(false)
+  const [originalInfo, setOriginalInfo] = useState(studentActivitiesData);
+  const [openDetailsModal, setOpenDetailsModal] = useState(false);
   const [contentID, setContentID] = useState(null);
 
   ///filter function...............
@@ -28,13 +28,16 @@ export default function Student_activities() {
 
   ///function for search based on Title and Organization......
   function handleSearch(text) {
-    const searchTextLower = text.toLowerCase();
-    const filteredData = studentActivitiesData.filter(
-      (data) =>
-        data.Title.toLowerCase().includes(searchTextLower) ||
-        data.Organizer.toLowerCase().includes(searchTextLower)
-    );
-    setActivitiesData(filteredData);
+    if(text === ""){
+      setActivitiesData(originalInfo);
+    }else{
+      const searchTextLower = text.toLowerCase();
+      const filteredData = studentActivitiesData.filter(
+        (data) =>
+          data.Title.toLowerCase().includes(searchTextLower)
+      );
+      setActivitiesData(filteredData);
+    }
   }
 
   ///open modal...
@@ -57,8 +60,8 @@ export default function Student_activities() {
       <div className="bg-gray-200">
         <main className="p-8">
           <div className="flex justify-between items-center mb-4">
-            <Filter FilterInfo={filterInfor} FilterMethod={handleFilter} />
-            <Search SerachText={handleSearch} />
+            <Filter FilterInfo={FilterInfo} FilterMethod={handleFilter} />
+            <Search searchText={handleSearch} />
           </div>
 
           <h2 className="text-2xl font-bold mb-4 text-center">Student Activities</h2>
