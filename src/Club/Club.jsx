@@ -4,12 +4,15 @@ import Filter from '../component/Filter';
 import { Link } from 'react-router-dom';
 import Search from '../component/Search';
 import DetailsModal from './DetailsModal';
+import Login from '../component/Login';
 
 export default function Club() {
     const [clubInfo, setClubInfo] = useState(clubData);
     const [originalClubInfo, setOriginalClubInfo] = useState(clubData);
     const [openDetailsModal, setOpenDetailsModal] = useState(false);
     const [contentID, setContentID] = useState(null);
+    const [logInModal,setLoginModal] = useState(false)
+    const [joinModal, setJoinModal] = useState(false);
 
     ///filter function...............
     function handleFilter(filterValue) {
@@ -51,45 +54,52 @@ export default function Club() {
     setContentID(null);
   }
 
+//   function handleJoinModal(e){
+//    setJoinModal(e);
+//   }
+
     return (
       
         <div className="bg-gray-100">
           {openDetailsModal && (
         <DetailsModal ID={contentID} clubData={originalClubInfo} onClose={handleModalOff} />
       )}
-            <main className="container mx-auto mt-8">
-                <div className="flex justify-between items-center mb-4">
-                    <Filter FilterInfo={FilterInfo} FilterMethod={handleFilter} />
-                    <Search searchText={handleSearch} />
-                </div>
-                <h2 className="text-center text-2xl font-bold mb-4">Clubs</h2>
-                <div className="bg-white shadow-md rounded-md overflow-hidden">
-                    <table className="min-w-full">
-                        <thead className="bg-gray-200">
-                            <tr>
-                                <th className="py-2 px-4 text-left text-gray-700">Club Name</th>
-                                <th className="py-2 px-4 text-left text-gray-700">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {clubInfo.map((data) => (
-                                <tr className="border-b" key={data.id}>
-                                    <td className="py-2 px-4" onClick={() => handleDetailsModal(data.id)}>
-                                        <p className="text-blue-500 text-left">
-                                            {data.name}
-                                        </p>
-                                    </td>
-                                    <td className="py-2 px-4">
-                                        <button className="bg-gray-500 text-white px-4 py-2 rounded-md">
-                                            Join now
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </main>
+      <main className="container mx-auto mt-8">
+      <div className="flex justify-between items-center mb-4">
+          <Filter FilterInfo={FilterInfo} FilterMethod={handleFilter} />
+          <Search searchText={handleSearch} />
+      </div>
+      <h2 className="text-center text-2xl font-bold mb-4">Clubs</h2>
+      <div className="bg-white shadow-md rounded-md overflow-hidden">
+          <table className="min-w-full">
+              <thead className="bg-gray-200">
+                  <tr>
+                      <th className="py-2 px-4 text-left text-gray-700">Club Name</th>
+                      <th className="py-2 px-4 text-left text-gray-700">Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {clubInfo.map((data) => (
+                      <tr className="border-b" key={data.id}>
+                          <td className="py-2 px-4" onClick={() => handleDetailsModal(data.id)}>
+                              <p className="text-blue-500 text-left">
+                                  {data.name}
+                              </p>
+                          </td>
+                          <td className="py-2 px-4">
+                            <Link to='/login'>
+                              <button className="bg-gray-500 text-white px-4 py-2 rounded-md" >
+                                  Join now
+                              </button>
+                              </Link>
+                          </td>
+                      </tr>
+                  ))}
+              </tbody>
+          </table>
+      </div>
+  </main>
+            
         </div>
     );
 }

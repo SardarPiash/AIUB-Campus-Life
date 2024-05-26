@@ -10,6 +10,8 @@ import Contact from "./Cantact/Contact";
 import HomeBodyInfo from "./Homepage/HomeBodyInfo";
 import HomeBodyNews from "./Homepage/HomeBodyNews";
 import FacilitiesInfo from "./Facilities/FacilitiesInfo";
+import Login from "./component/Login";
+import JoinClub from "./Club/JoinClub";
 
 
 export default function App() {
@@ -27,6 +29,8 @@ export default function App() {
         <Route path="/homepage/:title" element={<HomeBodyInfo />} />
         <Route path="/homepage/news/:title" element={<HomeBodyNews />} />
         <Route path="/facilities/:name" element={<FacilitiesInfo />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/join-club" element={<JoinClub />} />
       </Routes> 
       <div className=" mt-2">
       <Footer />
