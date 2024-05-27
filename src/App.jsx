@@ -12,14 +12,26 @@ import HomeBodyNews from "./Homepage/HomeBodyNews";
 import FacilitiesInfo from "./Facilities/FacilitiesInfo";
 import Login from "./component/Login";
 import JoinClub from "./Club/JoinClub";
-
+import { clubId } from "./contex/AddContexClub";
+import { useContext, useState } from "react";
+import ClubWellcomeMsg from "./Club/clubWellcomeMsg";
 
 export default function App() {
+  const [selectedClub,setSelectedClub]=useState({
+    clubId:"",
+    aiubId:"",
+    fullname:"",
+    email:"",
+    address:"",
+    phone:"",
+    department:""
+  })
   return (
     <BrowserRouter>
     <div>
       <Header/>
       <span className="w-full sticky top-0 bg-blue-700 z-50"><Navbar/></span>
+      <clubId.Provider value={{selectedClub,setSelectedClub}}>
       <Routes>
         <Route path="/" element={<Homepage/>}/>
         <Route path="/student_activities" element={<Student_activities />}/>
@@ -31,7 +43,9 @@ export default function App() {
         <Route path="/facilities/:name" element={<FacilitiesInfo />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join-club" element={<JoinClub />} />
+        <Route path="/club/join-club/welcome-msg" element={<ClubWellcomeMsg />} />
       </Routes> 
+      </clubId.Provider>
       <div className=" mt-2">
       <Footer />
         </div> 

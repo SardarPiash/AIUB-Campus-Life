@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { LogInData } from "../component/logindata";
+import { clubId } from "../contex/AddContexClub";
+import { clubData } from "./ClubData";
 
 export default function JoinClub() {
   const [formData, setFormData] = useState({
@@ -12,22 +14,24 @@ export default function JoinClub() {
     department: "",
   });
   const [errors, setErrors] = useState({});
-  const nevigation = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const aiub_id = location.state?.aiubId;
+  const { setSelectedClub, selectedClub } = useContext(clubId);
+  const desiredClub = clubData.find(data => data.id === selectedClub?.clubId);
 
   useEffect(() => {
     try {
       const token = localStorage.getItem("token");
       const user = LogInData.find((data) => data.AIUB_ID === aiub_id);
 
-      if (!token || token !== user.token) {
-        nevigation("/login");
+      if (!token || token !== user?.token) {
+        navigate("/login");
       }
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [aiub_id, navigate]);
 
   /// form data state handle....
   function handleChange(e) {
@@ -41,7 +45,16 @@ export default function JoinClub() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form submitted successfully", formData);
+      setSelectedClub({
+        ...selectedClub,
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phoneNumber,
+        address: formData.address,
+        department: formData.department,
+      });
+
+      navigate('/club/join-club/welcome-msg');
     }
   };
 
@@ -75,7 +88,9 @@ export default function JoinClub() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white rounded-lg shadow-lg w-96 p-6">
-        <h2 className="text-2xl font-bold mb-4">Enter Your Details</h2>
+        <h2 className="text-2xl font-bold mb-4">
+          Enter Your Details for joining {desiredClub?.name}
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4 text-left">
             <label
@@ -189,7 +204,14 @@ export default function JoinClub() {
               <div className="text-red-500">{errors.department}</div>
             )}
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-between">
+            <button
+              type="button"
+              onClick={() => navigate('/club')}
+              className="bg-red-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-blue-600 transition duration-300"
+            >
+              Cancel
+            </button>
             <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-blue-600 transition duration-300"

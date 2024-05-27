@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { LogInData } from './logindata';
 import { useNavigate } from 'react-router-dom';
+import { clubId } from '../contex/AddContexClub';
 
 export default function Login() {
   const [formData, setFormData] = useState({
     aiubId: "",
     password: ""
   });
+  const {setSelectedClub,selectedClub} =useContext(clubId)
   const [errors, setErrors] = useState({});
   const navigation =useNavigate()
 
@@ -25,6 +27,10 @@ export default function Login() {
       const user = LogInData.find((data) => data.AIUB_ID === formData.aiubId && data.password === formData.password);
       if (user) {
         localStorage.setItem('token', user.token);
+        setSelectedClub({
+            ...selectedClub,
+            aiubId:formData.aiubId
+        })
         navigation('/join-club', { state: { aiubId: formData.aiubId } })
       } else {
         setErrors({ form: "Invalid AIUB ID or Password" });

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { clubData, FilterInfo } from './ClubData';
 import Filter from '../component/Filter';
 import { Link } from 'react-router-dom';
 import Search from '../component/Search';
 import DetailsModal from './DetailsModal';
 import Login from '../component/Login';
+import { clubId } from '../contex/AddContexClub';
 
 export default function Club() {
     const [clubInfo, setClubInfo] = useState(clubData);
@@ -13,6 +14,7 @@ export default function Club() {
     const [contentID, setContentID] = useState(null);
     const [logInModal,setLoginModal] = useState(false)
     const [joinModal, setJoinModal] = useState(false);
+    const {setSelectedClub,selectedClub} = useContext(clubId)
 
     ///filter function...............
     function handleFilter(filterValue) {
@@ -86,7 +88,10 @@ export default function Club() {
                           </td>
                           <td className="py-2 px-4">
                             <Link to='/login'>
-                              <button className="bg-gray-500 text-white px-4 py-2 rounded-md" >
+                              <button className="bg-gray-500 text-white px-4 py-2 rounded-md" onClick={()=>setSelectedClub({
+                                ...selectedClub ,
+                                clubId: data.id
+                              })}>
                                   Join now
                               </button>
                               </Link>
