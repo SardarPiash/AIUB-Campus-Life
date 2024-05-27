@@ -54,9 +54,7 @@ export default function Club() {
     setContentID(null);
   }
 
-//   function handleJoinModal(e){
-//    setJoinModal(e);
-//   }
+
 
     return (
       
