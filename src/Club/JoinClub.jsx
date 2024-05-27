@@ -33,6 +33,11 @@ export default function JoinClub() {
     }
   }, [aiub_id, navigate]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/club');
+};
+
   /// form data state handle....
   function handleChange(e) {
     setFormData({
@@ -207,7 +212,7 @@ export default function JoinClub() {
           <div className="flex justify-between">
             <button
               type="button"
-              onClick={() => navigate('/club')}
+              onClick={handleLogout}
               className="bg-red-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-blue-600 transition duration-300"
             >
               Cancel
