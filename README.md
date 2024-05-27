@@ -44,3 +44,6 @@ npm install
 
 3. Run the Project:
 npm run build
+
+## Live
+https://aiub-campus-life-rho.vercel.app/
