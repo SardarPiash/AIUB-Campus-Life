@@ -19,7 +19,7 @@ export default function Facilities() {
         <div className="p-4">
           <h3 className="text-xl font-bold mb-2">{data.name}</h3>
           <p>{data.short_description}</p>
-          <Link to={`/facilities/${slugify(data.name)}`}><button>Read more</button></Link>
+          <Link to={`/facilities/${slugify(data.name)}` } className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"><button>Read more</button></Link>
           </div>
       </div>
       ))}
