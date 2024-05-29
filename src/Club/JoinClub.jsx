@@ -19,6 +19,24 @@ export default function JoinClub() {
   const aiub_id = location.state?.aiubId;
   const { setSelectedClub, selectedClub } = useContext(clubId);
   const desiredClub = clubData.find(data => data.id === selectedClub?.clubId);
+  
+
+  const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+  const departments = [
+    "Department of Accounting",
+    "Department of Business Analytics",
+    "Department of Business Economics",
+    "Department of Innovation and Entrepreneurship Development",
+    "Department of Finance",
+    "Department of Investment Management",
+    "Department of Management",
+    "Department of HRM",
+    "Department of Management Information Systems",
+    "Department of Marketing",
+    "Department of International Business",
+    "Department of Tourism and Hospitality Management",
+    "Department of Operations and Supply Chain Management",
+  ];
 
   useEffect(() => {
     try {
@@ -36,7 +54,7 @@ export default function JoinClub() {
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/club');
-};
+  };
 
   /// form data state handle....
   function handleChange(e) {
@@ -77,13 +95,13 @@ export default function JoinClub() {
       newErrors.phoneNumber = "Enter your phone number.";
     }
     if (!formData.bloodGroup) {
-      newErrors.bloodGroup = "Enter your blood group.";
+      newErrors.bloodGroup = "Select your blood group.";
     }
     if (!formData.address) {
       newErrors.address = "Enter your address.";
     }
     if (!formData.department) {
-      newErrors.department = "Enter your department.";
+      newErrors.department = "Select your department.";
     }
 
     setErrors(newErrors);
@@ -91,10 +109,10 @@ export default function JoinClub() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white rounded-lg shadow-lg w-96 p-6">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 border border-black rounded-md border-opacity-25">
+      <div className="bg-white rounded-lg shadow-lg m-8 w-2/5 p-6 border border-black border-opacity-15">
         <h2 className="text-2xl font-bold mb-4">
-          Enter Your Details for joining {desiredClub?.name}
+          Enter Your Details for joining {desiredClub.name}
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4 text-left">
@@ -110,10 +128,12 @@ export default function JoinClub() {
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="mt-2 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
             {errors.fullName && (
-              <div className="text-red-500">{errors.fullName}</div>
+              <div className="text-red-500 font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">
+                {errors.fullName}
+              </div>
             )}
           </div>
           <div className="mb-4 text-left">
@@ -129,9 +149,13 @@ export default function JoinClub() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="mt-2 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
-            {errors.email && <div className="text-red-500">{errors.email}</div>}
+            {errors.email && (
+              <div className="text-red-500 font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">
+                {errors.email}
+              </div>
+            )}
           </div>
           <div className="mb-4 text-left">
             <label
@@ -146,10 +170,12 @@ export default function JoinClub() {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="mt-2 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
             {errors.phoneNumber && (
-              <div className="text-red-500">{errors.phoneNumber}</div>
+              <div className="text-red-500 font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">
+                {errors.phoneNumber}
+              </div>
             )}
           </div>
           <div className="mb-4 text-left">
@@ -159,16 +185,24 @@ export default function JoinClub() {
             >
               Blood Group
             </label>
-            <input
-              type="text"
+            <select
               id="bloodGroup"
               name="bloodGroup"
               value={formData.bloodGroup}
               onChange={handleChange}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
+              className="mt-2 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="">Select your blood group</option>
+              {bloodGroups.map((group) => (
+                <option key={group} value={group}>
+                  {group}
+                </option>
+              ))}
+            </select>
             {errors.bloodGroup && (
-              <div className="text-red-500">{errors.bloodGroup}</div>
+              <div className="text-red-500 font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">
+                {errors.bloodGroup}
+              </div>
             )}
           </div>
           <div className="mb-4 text-left">
@@ -184,10 +218,12 @@ export default function JoinClub() {
               name="address"
               value={formData.address}
               onChange={handleChange}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="mt-2 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
             {errors.address && (
-              <div className="text-red-500">{errors.address}</div>
+              <div className="text-red-500 font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">
+                {errors.address}
+              </div>
             )}
           </div>
           <div className="mb-4 text-left">
@@ -197,29 +233,37 @@ export default function JoinClub() {
             >
               Department
             </label>
-            <input
-              type="text"
+            <select
               id="department"
               name="department"
               value={formData.department}
               onChange={handleChange}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
+              className="mt-2 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="">Select your department</option>
+              {departments.map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </select>
             {errors.department && (
-              <div className="text-red-500">{errors.department}</div>
+              <div className="text-red-500 font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">
+                {errors.department}
+              </div>
             )}
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-center mt-4">
             <button
               type="button"
               onClick={handleLogout}
-              className="bg-red-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-blue-600 transition duration-300"
+              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-300 opacity-70 hover:opacity-90 mr-2"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-blue-600 transition duration-300"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300 opacity-70 hover:opacity-90 ml-2"
             >
               Submit
             </button>

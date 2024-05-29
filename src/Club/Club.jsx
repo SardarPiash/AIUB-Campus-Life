@@ -60,13 +60,13 @@ export default function Club() {
 
     return (
       
-        <div className="bg-gray-100">
+        <div className="bg-gray-100 w-full">
           {openDetailsModal && (
         <DetailsModal ID={contentID} clubData={originalClubInfo} onClose={handleModalOff} />
       )}
-      <main className="container mx-auto mt-8">
-      <div className="flex justify-between items-center mb-4">
-          <Filter FilterInfo={FilterInfo} FilterMethod={handleFilter} />
+      <main className="container mx-auto pt-8">
+      <div className="flex justify-between p-3 items-center mb-4 border border-black rounded-md border-opacity-15">
+          <Filter  FilterInfo={FilterInfo} FilterMethod={handleFilter} />
           <Search searchText={handleSearch} />
       </div>
       <h2 className="text-center text-2xl font-bold mb-4">Clubs</h2>
@@ -79,25 +79,33 @@ export default function Club() {
                   </tr>
               </thead>
               <tbody>
-                  {clubInfo.map((data) => (
-                      <tr className="border-b" key={data.id}>
-                          <td className="py-2 px-4" onClick={() => handleDetailsModal(data.id)}>
-                              <p className="text-blue-500 text-left">
-                                  {data.name}
-                              </p>
-                          </td>
-                          <td className="py-2 px-4">
-                            <Link to='/login'>
-                              <button className="bg-gray-500 text-white px-4 py-2 rounded-md" onClick={()=>setSelectedClub({
-                                ...selectedClub ,
-                                clubId: data.id
-                              })}>
-                                  Join now
-                              </button>
-                              </Link>
-                          </td>
-                      </tr>
-                  ))}
+
+              {clubInfo.length > 0 ? clubInfo.map((data) => (
+    <tr className="border-b" key={data.id}>
+        <td className="py-2 px-4" onClick={() => handleDetailsModal(data.id)}>
+            <p className="text-blue-500 text-left">
+                {data.name}
+            </p>
+        </td>
+        <td className="py-2 px-4">
+            <Link to='/login'>
+                <button className="bg-gray-500 text-white px-4 py-2 rounded-md" onClick={() => setSelectedClub({
+                    ...selectedClub,
+                    clubId: data.id
+                })}>
+                    Join now
+                </button>
+            </Link>
+        </td>
+    </tr>
+)) : (
+    <tr>
+        <td colSpan="2" className="py-2 px-4 text-center text-gray-500">
+            No Club Found!
+        </td>
+    </tr>
+)}
+
               </tbody>
           </table>
       </div>

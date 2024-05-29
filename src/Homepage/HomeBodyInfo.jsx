@@ -13,11 +13,10 @@ export default function HomeBodyInfo() {
   }
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 border">
       <h1 className="text-center text-4xl font-bold mb-8">{retriveTitle.title}</h1>
       <img src={ImageUrl(retriveTitle.image)} alt={retriveTitle.title} className="mx-auto mb-8" />
-      <p className="text-center text-lg mb-8">{retriveTitle.description}</p>
-      <div className="text-left px-8">
+      <div className="text-left px-8 text-sm font-arial text-justify">
         <p>{retriveTitle.paragraph}</p>
       </div>
       <div className="text-center mt-8">

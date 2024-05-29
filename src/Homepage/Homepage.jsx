@@ -59,6 +59,7 @@ export default function Homepage() {
   return (
     <div>
       <main className="container mx-auto py-8">
+      <div className='border border-black p-1 border-opacity-10 rounded-md'>
         <h1 className="text-center text-4xl font-bold mb-8">Welcome to AIUB Campus Life!</h1>
         <div className="flex justify-center mb-8">
           <div className="relative w-full max-w-4xl">
@@ -69,10 +70,11 @@ export default function Homepage() {
             ))}
           </div>
         </div>
-
+         
+         
         {landingData.map((data, index) => (
           <Link to={`/homepage/${slugify(data.title)}`} key={index}>
-            <div className="container mx-auto">
+            <div className="container mx-auto ">
               <BodyImage
                 key={data.id}
                 imgSrc={ImageUrl(data.image)}
@@ -83,9 +85,10 @@ export default function Homepage() {
             </div>
           </Link>
         ))}
-
-        <h2 className="text-center text-3xl font-bold my-8">Campus Life</h2>
-        <div className="container mx-auto grid md:grid-cols-4 gap-4 p-4">
+</div>
+<div className='border border-black p-1 border-opacity-10 rounded-md mt-4'>
+        <h2 className="text-center text-3xl font-bold mt-6">Campus Life</h2>
+        <div className="min-w-full min-h-full container mx-auto grid md:grid-cols-4 gap-4 p-4 ">
           {GridItemData.map((data, index) => (
             <GridItem
               key={index}
@@ -93,7 +96,9 @@ export default function Homepage() {
             />
           ))}
         </div>
+        </div>
       </main>
     </div>
+    
   );
 }

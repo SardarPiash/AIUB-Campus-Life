@@ -76,11 +76,11 @@ export default function InquiryInput() {
   };
 
   return (
-    <div>
+    <div className=''>
       {submitted ? (
         <SubmitText formData={formData} aiubianID={aiubianID} onClose={handleClose} />
       ) : (
-        <div className="bg-gray-200 p-8 rounded-lg shadow-md max-w-lg mx-auto">
+        <div className="bg-gray-200 p-8 rounded-lg shadow-md max-w-lg mx-auto border border-black border-opacity-15">
           <h3 className="text-center mb-4 font-bold underline underline-offset-1">Have you any inquiries or feedback?</h3>
           <form onSubmit={handleSubmit}>
             <div className="mb-4 text-left">
@@ -93,7 +93,7 @@ export default function InquiryInput() {
                 value={formData.fullName}
                 onChange={handleChange}
               />
-              {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
+              {errors.fullName && <p className="text-red-500 text-sm font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">{errors.fullName}</p>}
             </div>
             <div className="mb-4 text-left">
               <label htmlFor="email" className="block text-black mb-1">Email:</label>
@@ -105,7 +105,7 @@ export default function InquiryInput() {
                 value={formData.email}
                 onChange={handleChange}
               />
-              {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+              {errors.email && <p className="text-red-500 text-sm font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">{errors.email}</p>}
             </div>
             <div className="mb-4 text-left">
               <label className="block text-black mb-1">Are you an Aiubian?</label>
@@ -133,7 +133,7 @@ export default function InquiryInput() {
                   <span className="ml-2">No</span>
                 </label>
               </div>
-              {errors.aiubian && <p className="text-red-500 text-sm">{errors.aiubian}</p>}
+              {errors.aiubian && <p className="text-red-500 text-sm font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">{errors.aiubian}</p>}
             </div>
             {aiubianID && (
               <div className="mb-4 text-left">
@@ -146,7 +146,7 @@ export default function InquiryInput() {
                   value={formData.aiubId}
                   onChange={handleChange}
                 />
-                {errors.aiubId && <p className="text-red-500 text-sm">{errors.aiubId}</p>}
+                {errors.aiubId && <p className="text-red-500 text-sm font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">{errors.aiubId}</p>}
               </div>
             )}
             <div className="mb-4 text-left">
@@ -158,10 +158,10 @@ export default function InquiryInput() {
                 value={formData.feedback}
                 onChange={handleChange}
               ></textarea>
-              {errors.feedback && <p className="text-red-500 text-sm">{errors.feedback}</p>}
+              {errors.feedback && <p className="text-red-500 text-sm font-medium mt-2 p-1 border border-red-500 bg-sky-100 rounded-md border-opacity-15">{errors.feedback}</p>}
             </div>
             <div className="text-center">
-              <button type="submit" className="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600">Submit</button>
+              <button type="submit" className="bg-teal-500 text-white px-4 py-2 rounded opacity-70 hover:opacity-90">Submit</button>
             </div>
           </form>
         </div>

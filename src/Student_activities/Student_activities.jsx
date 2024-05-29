@@ -60,7 +60,7 @@ export default function Student_activities() {
       )}
       <div className="bg-gray-200">
         <main className="p-8">
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-center p-4 mb-4 border border-black rounded-md border-opacity-15">
             <Filter FilterInfo={FilterInfo} FilterMethod={handleFilter} />
             <Search searchText={handleSearch} />
           </div>

@@ -15,7 +15,7 @@ export default function DetailsModal({ ID, ActivitiesData, onClose }) {
                 alt={filteredData.Title}
                 className="w-full h-48 object-cover rounded-lg mb-4" 
               />
-              <div>
+              <div className="border border-black rounded-md border-opacity-5 pb-4">
                 <h2 className="text-3xl font-bold mb-4">{filteredData.Title}</h2>
                 <span className="block text-base text-gray-700 mb-3 text-left ml-5">
                   <b>Organizer: </b>{filteredData.Organizer}
@@ -29,13 +29,14 @@ export default function DetailsModal({ ID, ActivitiesData, onClose }) {
                 <p className="text-sm lg:text-base mb-4 text-left ml-5">
                   <b>Description: </b>{filteredData.Description}
                 </p>
-              </div>
+              
               <button
                 onClick={onClose}
-                className="mt-4 bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition duration-300 w-40 text-center"
+                className="mt-4 bg-red-500 text-white rounded-lg px-4 py-2 opacity-70 hover:opacity-90 transition duration-300 w-40 text-center"
               >
                 Close
               </button>
+              </div>
             </div>
           </>
         ) : (

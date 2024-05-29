@@ -10,8 +10,8 @@ export const FacilitiesData=[
     {
       "id": 2,
       "image": "gym.jpeg",
-      "name": "AIUB Fitness/Gymnasium Facilities",
-      "short_description": "Our modern gymnasium supports the fitness goals of all members of the AIUB community.",
+      "name": "AIUB Gymnasium Facilities",
+      "short_description": "Our modern gymnasium supports the fitness goals of all members.",
       "long_description": "Our modern gymnasium, located on the 10th floor of the D-building, is designed to support the fitness goals of all members of the AIUB community. Equipped with the latest fitness equipment, our gym is accessible to both male and female students, faculty, and officials. With dedicated sessions for different groups, we ensure that everyone has the opportunity to exercise comfortably. The gymnasium also offers fitness classes, personal training sessions, and wellness programs to help our community members stay fit and healthy.",
       "location": "10th floor, D-building"
     },
