@@ -18,8 +18,10 @@ export default function BodyImage({ imgSrc, title, text, imgPosition }) {
             imgPosition === "left" ? "fade-in-right" : "fade-in-left"
           } flex-none`}
         >
-          <h2 className="text-2xl font-bold mb-2">{title}</h2>
-          <p className="text-gray-700">{text}</p>
+          <div>
+            <h2 className="text-2xl font-bold mb-2">{title}</h2>
+            <p className="text-gray-700 text-justify">{text}</p>
+          </div>
         </div>
         {imgPosition === "right" && (
           <div className="w-1/2 fade-in-right flex-none">

@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <nav className="sticky top-0 bg-blue-700 z-50">
+      <nav className="sticky top-0 bg-blue-700 z-50 ">
         <div className="container mx-auto text-white flex justify-around items-center py-2 px-4">
           <div className="hidden md:flex space-x-6">
             <Link to="/" className="hover:text-sky-200">Home</Link>

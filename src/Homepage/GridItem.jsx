@@ -11,7 +11,7 @@ export default function GridItem({Data }) {
     <p className="text-center font-semibold">{Data.title}</p>
     <p className="text-center mb-4">{Data.short_description}</p>
     <div className="text-center">
-      <Link to={`/homepage/news/${slugify(Data.title)}`} className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Read More</Link>
+      <Link to={`/homepage/news/${slugify(Data.title)}`} className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 opacity-80 hover:opacity-90">Read More</Link>
     </div>
   </div>
     </div>

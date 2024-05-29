@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="container mx-auto grid md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-bold text-xl mb-2">Academics</h3>
-            <ul >
+            <ul className='text-left ml-9'>
               <li><Link to="#" className="hover:underline">Academic Calendar</Link></li>
               <li><Link to="#" className="hover:underline">Academic Regulations</Link></li>
               <li><Link to="#" className="hover:underline">Faculty of Arts & Social Sciences</Link></li>
@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="font-bold text-xl mb-2">People</h3>
-            <ul >
+            <ul className='text-left ml-24'>
               <li><Link to="#" className="hover:underline">Students</Link></li>
               <li><Link to="#" className="hover:underline">Faculty</Link></li>
               <li><Link to="#" className="hover:underline">Staff</Link></li>
@@ -30,10 +30,12 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="font-bold text-xl mb-2">Location & Contact</h3>
+            <span className='text-left p-'>
             <p>408/1, Kuratoli, Khilkhet, Dhaka 1229, Bangladesh</p>
             <p>Telephone: +88 02 841 4046-9, +88 02 841 4050</p>
             <p>Fax: +88 02 841 2255</p>
             <p>Email: info@aiub.edu</p>
+            </span>
           </div>
           <div>
             <h3 className="font-bold text-xl mb-2">Social Icons</h3>
@@ -64,7 +66,7 @@ export default function Footer() {
             <p className=" mt-3 ml-2">&copy; 2023 The American International University-Bangladesh</p>
           </div>
           <p>Powered by AIUB Software Development Department</p>
-        </div>        
+        </div>       
       </footer>
     </div>
   )
