@@ -8,9 +8,9 @@ export default function Login() {
     aiubId: "",
     password: ""
   });
-  const {setSelectedClub,selectedClub} =useContext(clubId)
+  const { setSelectedClub, selectedClub } = useContext(clubId);
   const [errors, setErrors] = useState({});
-  const navigation =useNavigate()
+  const navigate = useNavigate();
 
   /// form data state handle....
   function handleChange(e) {
@@ -28,10 +28,10 @@ export default function Login() {
       if (user) {
         localStorage.setItem('token', user.token);
         setSelectedClub({
-            ...selectedClub,
-            aiubId:formData.aiubId
-        })
-        navigation('/join-club', { state: { aiubId: formData.aiubId } })
+          ...selectedClub,
+          aiubId: formData.aiubId
+        });
+        navigate('/join-club', { state: { aiubId: formData.aiubId } });
       } else {
         setErrors({ form: "Invalid AIUB ID or Password" });
       }
@@ -55,8 +55,8 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white rounded-lg shadow-lg w-96 p-6">
+    <div className=" flex items-center justify-center min-h-4/5 bg-gray-100 border border-black border-opacity-15 p-4 rounded-lg">
+      <div className="bg-white rounded-lg shadow-lg w-96 p-10 m-8">
         <h2 className="text-2xl font-bold mb-4">Log in with your AIUB credentials</h2>
         <form onSubmit={handleSubmit}>
           {errors.form && <div className="text-red-500 mb-4">{errors.form}</div>}
@@ -88,10 +88,10 @@ export default function Login() {
             />
             {errors.password && <div className="text-red-500">{errors.password}</div>}
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-center mt-4">
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
+              className="bg-blue-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
             >
               Log In
             </button>

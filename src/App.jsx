@@ -28,28 +28,30 @@ export default function App() {
   })
   return (
     <BrowserRouter>
-    <div>
-      <Header/>
-      <span className="w-full sticky top-0 bg-blue-700 z-50"><Navbar/></span>
-      <clubId.Provider value={{selectedClub,setSelectedClub}}>
-      <Routes>
-        <Route path="/" element={<Homepage/>}/>
-        <Route path="/student_activities" element={<Student_activities />}/>
-        <Route path="/club" element={<Club />} />
-        <Route path="/facilities" element={<Facilities />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/homepage/:title" element={<HomeBodyInfo />} />
-        <Route path="/homepage/news/:title" element={<HomeBodyNews />} />
-        <Route path="/facilities/:name" element={<FacilitiesInfo />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/join-club" element={<JoinClub />} />
-        <Route path="/club/join-club/welcome-msg" element={<ClubWellcomeMsg />} />
-      </Routes> 
-      </clubId.Provider>
-      <div className=" mt-2">
-      <Footer />
-        </div> 
-    </div>
-    </BrowserRouter> 
-  )
+      <div className="">
+        <Header />
+        <span className="w-full sticky top-0 bg-blue-700 z-50">
+          <Navbar />
+        </span>
+        <clubId.Provider value={{ selectedClub, setSelectedClub }}>
+          <div className="mt-1 flex-grow overflow-auto p-3 border border-black border-opacity-25">
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/student_activities" element={<Student_activities />} />
+              <Route path="/club" element={<Club />} />
+              <Route path="/facilities" element={<Facilities />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/homepage/:title" element={<HomeBodyInfo />} />
+              <Route path="/homepage/news/:title" element={<HomeBodyNews />} />
+              <Route path="/facilities/:name" element={<FacilitiesInfo />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/join-club" element={<JoinClub />} />
+              <Route path="/club/join-club/welcome-msg" element={<ClubWellcomeMsg />} />
+            </Routes>
+          </div>
+        </clubId.Provider>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
 }

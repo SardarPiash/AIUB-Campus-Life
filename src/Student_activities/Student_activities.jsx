@@ -11,7 +11,7 @@ export default function Student_activities() {
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
   const [contentID, setContentID] = useState(null);
 
-  ///filter function...............
+  // Filter function
   function handleFilter(filterValue) {
     let filteredData = [...studentActivitiesData];
 
@@ -26,27 +26,28 @@ export default function Student_activities() {
     }
   }
 
-  ///function for search based on Title and Organization......
+  // Search function based on Title and Organization
   function handleSearch(text) {
-    if(text === ""){
+    if (text === "") {
       setActivitiesData(originalInfo);
-    }else{
+    } else {
       const searchTextLower = text.toLowerCase();
       const filteredData = studentActivitiesData.filter(
         (data) =>
-          data.Title.toLowerCase().includes(searchTextLower)
+          data.Title.toLowerCase().includes(searchTextLower) ||
+          data.Organizer.toLowerCase().includes(searchTextLower)
       );
       setActivitiesData(filteredData);
     }
   }
 
-  ///open modal...
+  // Open modal
   function handleDetailsModal(ID) {
     setContentID(ID);
     setOpenDetailsModal(true);
   }
 
-  ///close modal.......
+  // Close modal
   function handleModalOff() {
     setOpenDetailsModal(false);
     setContentID(null);
@@ -59,7 +60,7 @@ export default function Student_activities() {
       )}
       <div className="bg-gray-200">
         <main className="p-8">
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-center p-4 mb-4 border border-black rounded-md border-opacity-15">
             <Filter FilterInfo={FilterInfo} FilterMethod={handleFilter} />
             <Search searchText={handleSearch} />
           </div>
@@ -73,13 +74,21 @@ export default function Student_activities() {
               <div className="font-bold">Date</div>
             </div>
             <div className="divide-y divide-gray-200">
-              {activitiesData.map((data) => (
-                <div className="grid grid-cols-3 p-2 hover:bg-gray-100" key={data.id} onClick={() => handleDetailsModal(data.id)}>
-                  <p className="text-blue-500 hover:underline text-left">{data.Title}</p>
-                  <div className="text-left">{data.Organizer}</div>
-                  <div>{data.Date}</div>
-                </div>
-              ))}
+              {activitiesData.length > 0 ? (
+                activitiesData.map((data) => (
+                  <div
+                    className="grid grid-cols-3 p-2 hover:bg-gray-100"
+                    key={data.id}
+                    onClick={() => handleDetailsModal(data.id)}
+                  >
+                    <p className="text-blue-500 hover:underline text-left">{data.Title}</p>
+                    <div className="text-left">{data.Organizer}</div>
+                    <div>{data.Date}</div>
+                  </div>
+                ))
+              ) : (
+                <div className="p-4 text-center text-gray-500">No activities found.</div>
+              )}
             </div>
           </div>
         </main>
